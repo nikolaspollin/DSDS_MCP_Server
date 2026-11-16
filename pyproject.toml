@@ -1,0 +1,6 @@
+[project]
+name = "seminar-raumserver"
+version = "1.0.0"
+description = "Raumbuchung für das Seminar Sprachdialogsysteme"
+requires-python = ">=3.11,<3.15"
+dependencies = ["fastmcp>=3.0,<4"]
