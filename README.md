@@ -49,12 +49,3 @@ Der Terminalclient ist ein kleines, fest programmiertes Beispiel für den Host. 
 | C | 8 | belegt | frei |
 
 Der Plan enthält anfangs nur die beiden belegten Intervalle aus der Tabelle. Alle weiteren Zeiten sind in dieser Demo frei. Reservierungen gelten nur im laufenden Prozess. Alle verbundenen Clients sehen denselben Plan. Der Server läuft lokal unter `http://127.0.0.1:8420/mcp` (Streamable HTTP).
-
-## Hinweise für die Seminarleitung
-
-- **Zuständigkeiten zeigen:** Der Terminalhost holt die Zustimmung ein. Ein direkter Tool-Aufruf im Inspector führt die Buchung sofort aus und entspricht einer manuellen Freigabe durch die testende Person. Der Server kann nicht feststellen, was im Chat gesagt wurde. Sein Schreibrecht lässt sich für die gesamte Instanz mit `uv run server.py --read-only` abschalten (laufenden Server zuerst stoppen). Das ist ein Lehrmodell ohne Benutzerkonten.
-- **Typischer Denkfehler:** „B passt, weil nur dort vier Leute Platz haben.“ A und C sind sogar größer. B ist als einziger Raum über das *gesamte* Zeitfenster verfügbar. Mit fünf Personen passt keiner der drei.
-- **Zustand zwischen Gruppen:** Pro Gruppe eine lokale Instanz starten. Teilen sich Gruppen denselben Server, kann B zwischen Prüfung und Freigabe anderweitig vergeben werden. Genau deshalb prüft das Buchungstool die Belegung erneut.
-- **Tests:** `uv run python -m unittest discover -s tests -v` prüft die Musterlösung über einen MCP-Client im selben Prozess. Meldungen zu bewusst abgewiesenen Aufrufen sind zu erwarten. Die Tests verändern einen separat laufenden HTTP-Server nicht.
-
-Die Übungsstruktur folgt [Exercise 3 von Pamela Fox](https://github.com/pamelafox/pycon2026-mcp-tutorial/blob/main/exercise3.md): kleinen FastMCP-Server aufbauen, lesendes und schreibendes Tool implementieren, dann aus Client und Inspector aufrufen. Die Beispieldaten und Parameter stammen aus dem [Seminarvortrag „Tools & Reasoning“](https://docs.google.com/presentation/d/1GIkb-GRjZnRHcFtVPTP14F9A0k8k-CfTAJGyjkGY0cs/edit).
